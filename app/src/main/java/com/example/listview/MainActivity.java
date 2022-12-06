@@ -3,10 +3,15 @@ package com.example.listview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.AndroidException;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     EditText textField;
@@ -18,10 +23,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btn = findViewById(R.id.button);
+        listView = findViewById(R.id.listView);
+        textField = findViewById(R.id.editText);
+
+        ArrayList<String> data = new ArrayList<String>();
+        ArrayAdapter<String> adpt = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+        listView.setAdapter(adpt);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                    String text = textField.getText().toString();
+                    if(!text.equals("")){
+                        data.add(text);
+                        textField.setText("");
+                        adpt.notifyDataSetChanged();
+                    }
             }
         });
     }
