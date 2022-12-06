@@ -22,6 +22,7 @@
 
     <EditText
         android:id="@+id/editText"
+        android:hint="Type to add to the list"
         android:layout_width="235dp"
         android:layout_height="43dp"
         android:layout_marginStart="4dp"
@@ -41,12 +42,21 @@
         app:layout_constraintTop_toTopOf="@+id/editText"
         app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click on items to remove them"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:background="@color/teal_700"
+        android:background="@color/light_silver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

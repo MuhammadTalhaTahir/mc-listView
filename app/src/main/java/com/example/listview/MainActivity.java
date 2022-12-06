@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.AndroidException;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,18 +29,30 @@ public class MainActivity extends AppCompatActivity {
         textField = findViewById(R.id.editText);
 
         ArrayList<String> data = new ArrayList<String>();
+        data.add("Sample Text");
+
         ArrayAdapter<String> adpt = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
         listView.setAdapter(adpt);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                btn.setEnabled(false);
+                Log.d("[INFO]", "clicked");
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    String text = textField.getText().toString();
-                    if(!text.equals("")){
-                        data.add(text);
-                        textField.setText("");
-                        adpt.notifyDataSetChanged();
-                    }
+                String text = textField.getText().toString();
+                if(!text.equals("")){
+                    data.add(text);
+                    textField.setText("");
+                    adpt.notifyDataSetChanged();
+                }
             }
         });
+
     }
 }
