@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">listView</string>
+    <string name="heading">Add something to list</string>
+    <string name="add">Add</string>
+</resources>
